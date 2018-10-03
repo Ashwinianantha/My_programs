@@ -1,0 +1,14 @@
+<div class="aui-buttons" data-issue-key="$issue.getKey()">
+	#if($roomUrl)		
+		<a href="$roomUrl" class="aui-button aui-button-link" target="_blank">GoTo Room</a>
+	#else
+    	<button class="aui-button" id="create-room-id">Create a Room</button>
+    #end
+    
+    #if($meetingId)
+    	<button class="aui-button">Join Meeting</button>
+    #else  
+    	<button class="aui-button">Launch a Meeting</button>
+    #end
+       
+</div>

@@ -1,0 +1,27 @@
+<html>
+<head>
+  	$webResourceManager.requireResource("com.atlassian.auiplugin:ajs")	
+  	$webResourceManager.requireResource("com.atlassian.auiplugin:message")
+   	<title>Customer Portal</title>   	
+    <meta name="decorator" content="atl.general">
+  </head>
+  <body>
+  	<div class="aui-message aui-message-error">
+    	<p class="title">
+        	<strong>Error!</strong>
+    	</p>
+    		#if ($action.hasAnyErrors())                        
+             	<ul>
+                 	#foreach ($error in $action.getErrorMessages())
+                    	<li>$error</li>
+                    #end
+                    #foreach ($error in $action.errors)
+                    	<li>$error</li>
+                    #end
+                  </ul>
+			 #end
+
+	</div>
+  </body>
+
+</html>

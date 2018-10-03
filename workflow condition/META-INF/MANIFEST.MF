@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Workflow_condition
+Bundle-SymbolicName: workflow_condition
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: workflow_condition
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

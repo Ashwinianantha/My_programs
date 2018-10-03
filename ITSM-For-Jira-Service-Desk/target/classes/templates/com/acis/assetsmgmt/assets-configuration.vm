@@ -1,0 +1,210 @@
+<html>
+<head>  	  
+  	$webResourceManager.requireResource("com.atlassian.auiplugin:aui-sidebar")	
+  	$webResourceManager.requireResource("com.atlassian.auiplugin:aui-restfultable")	  	
+        	
+   	<title>Assets Configuration</title>
+    <meta name="decorator" content="atl.general">
+  </head>
+  	<body>
+			<header class="aui-page-header">
+    			<div class="aui-page-header-inner">
+        			<div class="aui-page-header-image">
+            		#**	<span class="aui-avatar aui-avatar-large aui-avatar-project">
+                			<span class="aui-avatar-inner">
+                    			<img alt="Atlassian logo" src="images/avatar-64.png">
+                			</span>
+            			</span> *#
+       			 	</div>
+        			<div class="aui-page-header-main">            			
+            			<h1>ACIS Assets Management</h1>
+        			</div>
+        			<div class="aui-page-header-actions">
+            			<div class="aui-buttons">
+                			<button class="aui-button aui-button-light">button1</button>
+                			<button class="aui-button aui-button-light">button2</button>
+                			<button class="aui-button aui-button-light">button3</button>
+            			</div>
+        			</div>
+    			</div>
+			</header>
+				<div id="assets-config-tabs" class="aui-tabs horizontal-tabs">
+				    <ul class="tabs-menu">
+				        <li class="menu-item active-tab">
+				            <a href="#tabs-assets-definition">Assets Definition</a>
+				        </li>
+				        <li class="menu-item">
+				            <a href="#tabs-assets-fields">Assets Fields Selection</a>
+				        </li>				    
+				        <li class="menu-item">
+				            <a href="#tabs-fields-configuration">Custom Fields Configuration</a>
+				        </li>
+				        <li class="menu-item">
+				            <a href="#tabs-status-configuration">Status Configuration</a>
+				        </li>
+				    </ul>
+				    <div class="tabs-pane active-pane" id="tabs-assets-definition">
+				    	<div>
+					        <form class="aui" action="/secure/assetsconfig.jspa" enctype= "multipart/form-data">
+					        	<div class="field-group">
+						        	<label for="asset-type-name">AssetType Name<span class="aui-icon icon-required">required</span></label>
+						        	<input class="text" type="text" id="asset-type-name" name="asset-type-name" title="Assets type Name">					        	
+						    	</div>
+						    	<div class="field-group">
+						    		<label for="asset-type-description">AssetType Description</label>
+	    							<input class="text long-field" type="text" id="asset-type-description" name="asset-type-description">
+						    	</div>
+						    	<fieldset class="group">
+								   <legend>
+								   		<span>AssetType Icon</span>
+								   	</legend>
+								    <div class="radio">
+								    	<input class="radio" type="radio" checked="checked" value="/images/icons/icon1.png" name="asset-type-icon" id="asset-type-icon-1">
+								    	<label for="radioButtonOne">Icon 1</label>
+								    </div>
+								    <div class="radio">
+								    	<input class="radio" type="radio" name="asset-type-icon" value="/images/icons/icon2.png" id="asset-type-icon-2">
+								    	<label for="radioButtonTwo">Icon 2</label>
+								    </div>
+								    <div class="radio">
+								    	<input class="radio" type="radio" name="asset-type-icon" value="custom" id="asset-type-icon-3">
+								    	<label for="radioButtonThree">Custom Icon</label>
+								    </div>     
+								 </fieldset>
+						    	 <fieldset>
+							     	<legend><span>Upload Icon</span></legend>
+							     	<div class="field-group">
+							     		<label for="asset-upload-icon">Upload Icon</label>
+							     		<input class="upfile ignore-inline-attach" type="file" id="asset-upload-icon" name="asset-upload-icon">
+							     	</div>
+							    </fieldset>
+							    <div class="buttons-container">
+									<div class="buttons">
+										##<label for="asset-type-create-another">
+										##<input id="asset-type-create-another" type="checkbox">Create another</label>
+										<input class="button submit" type="submit" value="Save" id="asset-type-save-button">
+										<a class="cancel" href="#">Cancel</a>
+									</div>
+								</div>						    	
+					        </form>
+					    </div>
+					    <hr style="margin: 20px 0;border: 1px solid grey;" />
+					    <div>
+					    	<table class="aui">
+					    		 <thead>
+							        <tr>
+							        	<th id="asset-id">ID#</th>	
+							        	<th id="icon-url">Icon</th>							            
+							            <th id="asset-name">AssetType Name</th>
+							            <th id="asset-description">AssetType Description</th>
+							            
+							        </tr>
+							    </thead>
+							    <tbody>
+							    	#foreach( $assetBean in $assetDefenitionBeans ) 
+								    	<tr>
+								    		<td headers="asset-id">$assetBean.id</td>
+								    	 	<td headers="icon-url">$assetBean.iconUrl</td>
+								            <td headers="asset-name">$assetBean.assetTypeName</td>
+								            <td headers="asset-description">$assetBean.assetTypeDescription</td>
+								    	</tr>
+								    #end
+							    <tbody>
+					    	</table>			    		
+					    
+					    </div>
+				    </div>
+					
+					##Tab 2
+				    <div class="tabs-pane" id="tabs-assets-fields">
+				        <div>
+				        	<form class="aui" method="post" action="/secure/assetsconfig!assetsMappingSave.jspa">
+				        		<div class="field-group">
+							        <label for="asset-type-select">AssetType Name</label>
+							        <select class="select" id="asset-type-select" name="asset-type-select">
+							         	<option value="" >Select</option>
+							        	#foreach( $assetBean in $assetDefenitionBeans ) 							           
+							            	<option value="$assetBean.id">$assetBean.assetTypeName</option>							             
+							            #end 
+							        </select>
+							    </div>
+							    <div>
+								     <table id="fields-mapping-table" width=100%>
+						    	        <tr align="center">
+								                <td align="left" width=50% valign="top">
+								                	<div class="field-group">
+	        											<label for="fieldsList">Available fields:</label>
+								                		<select class="multi-select" size="10" multiple="multiple" id="fieldsList" name="fieldsList">
+									                		#foreach ($fieldsBean in $assetFieldBeans)
+																<option value="$fieldsBean.customFieldId">$fieldsBean.name</option>
+															#end
+														</select>
+								                	</div>										        
+									            </td>
+								    
+								                <td align="left" width=50% valign="top">
+								                	<div class="field-group">
+								                		<label for="fieldsListSelected">Selected fields:</label>
+								                		<select class="multi-select" size="10" multiple="multiple" id="fieldsListSelected" name="fieldsListSelected">
+									                		#foreach ($selectedFields in $selectedFieldsList)
+																<option value="$selectedFields.customFieldId">$selectedFields.name</option>
+															#end
+														</select>
+								                	</div>									                   						
+								                </td>
+								    	</tr>
+								    	        
+										<tr align="center" valign="center">
+								                <td align="center" width=50% valign="top">
+								                    <button type="button" id="btnRight">Add &gt;&gt;</button>
+												</td>
+												<td align="center" width=50% valign="top">						
+													<button type="button" id="btnLeft">&lt;&lt; Remove</button>
+								                </td>
+										</tr>
+						    	    </table>
+					    	    </div>
+							    <div align="center" class="buttons-container">
+									<div class="buttons">										
+										<input class="button submit" type="submit" value="Save" id="asset-type-field-mapping-save-button">
+										<a class="cancel" href="#">Cancel</a>
+									</div>
+								</div>	
+				        	</form>
+				        </div>
+				        <hr style="margin: 20px 0;border: 1px solid grey;" />
+				        <div>
+				        	<table id="asset-type-fields-mapping-table" class="aui">
+					    		 <thead>
+							        <tr>
+							        	<th id="asset-mapping-id">ID#</th>							        							            
+							            <th id="asset-mapping-name">AssetType Name</th>
+							            <th id="asset-mapping-fields">Selected Fields</th>							            
+							        </tr>
+							    </thead>
+							    <tbody>
+							    	#foreach( $assetTypeBean in $assetTypeFieldsMappingList ) 
+								    	<tr>
+								    		<td headers="asset-mapping-id">$assetTypeBean.id</td>								    	 	
+								            <td headers="asset-mapping-name">$assetTypeBean.assetTypeName</td>
+								            <td headers="asset-mapping-fields">$assetTypeBean.fields</td>
+								    	</tr>
+								    #end
+							    <tbody>
+					    	</table>				 
+				        
+				        </div>
+				    </div>
+				    
+					##Tab3
+				    <div class="tabs-pane" id="tabs-fields-configuration">				     	
+				        <table id="asset-config-fields-table" class="aui"></table>
+				    </div>
+					
+					##Tab4
+				    <div class="tabs-pane" id="tabs-status-configuration">
+				        <table id="asset-config-status-table" class="aui"></table>
+				    </div>
+				</div>
+	</body>
+</html>

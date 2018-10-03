@@ -1,0 +1,9 @@
+127.0.0.1 - - [01/Aug/2018:16:02:18 +0530] "GET / HTTP/1.1" 404 1076
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:02:21 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 200 111
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:02:24 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 200 111
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:07:49 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 200 111
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:14:56 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:15:34 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:15:35 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:15:36 +0530] "GET /helloworld/rest/hello/message1 HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [01/Aug/2018:16:15:46 +0530] "GET /helloworld/rest/ HTTP/1.1" 200 111

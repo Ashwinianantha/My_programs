@@ -1,0 +1,2 @@
+server.port=9001
+upload.path=/C/test/upload/

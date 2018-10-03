@@ -1,0 +1,26 @@
+package com.acis;
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+public class Client1 {
+	public static void main(String[] args) {
+        String url = "https://www.journaldev.com/sitemap.xml";
+        
+        downloadUsingNIO(url, "C:\\test\\sitemap.xml");
+		
+		downloadUsingStream(url, "C:\\test\\sitemap_stream.xml");
+	}
+
+	private static void downloadUsingStream(String url, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void downloadUsingNIO(String url, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+}

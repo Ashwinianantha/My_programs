@@ -1,0 +1,185 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}"
+	plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+		<param name="plugin-icon">images/pluginIcon.png</param>
+		<param name="plugin-logo">images/pluginLogo.png</param>
+	</plugin-info>
+
+	<!-- add our i18n resource -->
+	<resource type="i18n" name="i18n" location="ITSM-For-Jira-Service-Desk" />
+
+	<!-- add our web resources -->
+	<web-resource key="ITSM-For-Jira-Service-Desk-resources"
+		name="ITSM-For-Jira-Service-Desk Web Resources">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="ITSM-For-Jira-Service-Desk.css"
+			location="/css/ITSM-For-Jira-Service-Desk.css" />
+		<resource type="download" name="ITSM-For-Jira-Service-Desk.js"
+			location="/js/ITSM-For-Jira-Service-Desk.js" />
+		<resource type="download" name="images/" location="/images" />
+
+		<context>ITSM-For-Jira-Service-Desk</context>
+	</web-resource>
+
+	<rest key="ACISRest" name="ACIS REST" path="/acisrest" version="1">
+		<description>Provides ACIS Rest services</description>
+	</rest>
+
+	<ao key="acis-assets-mgmt-ao-module">
+		<description>ACIS Assets Management AO modules.</description>
+		<entity>com.acis.assets.mgmt.ao.AssetsCustomFieldsEntity</entity>
+		<entity>com.acis.assets.mgmt.ao.AssetsStatusEntity</entity>
+		<entity>com.acis.assets.mgmt.ao.AssetTypesEntity</entity>
+		<entity>com.acis.assets.mgmt.ao.CustomfieldsMappingEntity</entity>
+		
+	</ao>
+
+	<!-- <ao key="assets-status-ao-module"> <description>Assets Status AO module.</description> 
+		<entity>com.acis.assets.mgmt.ao.AssetsStatusEntity</entity> </ao> <ao key="assets-types-ao-module"> 
+		<description>Assets Definition AO module.</description> <entity>com.acis.assets.mgmt.ao.AssetTypesEntity</entity> 
+		</ao> -->
+
+	<web-resource key="collaboration-js-resources7" name="Collaboration Web Resources7">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="conversation.js"
+			location="/js/webpanels/conversation.js" />
+		<context>atl.general</context>
+	</web-resource>
+
+	<web-resource key="assets-fields-config-js-resources4"
+		name="Assets Fields Configuration Web Resources4">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="assetsFieldsConfiguration.js"
+			location="/js/assets/assetsFieldsConfiguration.js" />
+
+		<transformation extension="js">
+			<transformer key="jsI18n" />
+		</transformation>
+
+		<context>atl.general</context>
+	</web-resource>
+
+	<web-resource key="assets-status-config-js-resources6"
+		name="Assets Status Configuration Web Resources6">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="assestsStatusConfiguration.js"
+			location="/js/assets/assestsStatusConfiguration.js" />
+
+		<transformation extension="js">
+			<transformer key="jsI18n" />
+		</transformation>
+
+		<context>atl.general</context>
+	</web-resource>
+
+	<web-resource key="assets-field-mapping-js-resources2"
+		name="Assets Field Mapping Configuration2">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="assetsFieldsMapping.js"
+			location="/js/assets/assetsFieldsMapping.js" />
+
+		<transformation extension="js">
+			<transformer key="jsI18n" />
+		</transformation>
+
+		<context>atl.general</context>
+	</web-resource>
+
+	<web-item key="acis_link" name="ACIS - Common Header" section="system.top.navigation.bar"
+		i18n-name-key="webfragments.navigation.bar.item.find.acis.name.common.header"
+		weight="70">
+		<label key="menu.acis.header" />
+		<link linkId="acis_link">/secure/JSDPortal!default.jspa</link>
+		<tooltip key="menu.acis.common.header.title" />
+	</web-item>
+
+	<!-- <web-section key="acis_links_section" name="ACIS JSD" location="acis_jsd_link" 
+		weight="10" /> -->
+
+	<web-section key="acis-menu-service_desk" name="Service Desk Section"
+		location="acis_link" i18n-name-key="webfragments.navigation.bar.acis.dropdown.sd"
+		weight="50">
+	</web-section>
+
+	<web-item i18n-name-key="webfragments.navigation.bar.acis.sd.portal.link"
+		key="acis_jsd_link" name="JSD Portal" section="acis_link/acis-menu-service_desk"
+		weight="10">
+		<!-- <condition class="com.atlassian.jira.plugin.webfragment.conditions.HasLastSearchRequestCondition"/> -->
+		<label key="menu.acis.portal.link" />
+		<link linkId="jsd_portal_link">/secure/JSDPortal!default.jspa</link>
+		<!-- <tooltip key="menu.acis.sd.portal.title"/> -->
+	</web-item>
+
+	<web-section key="assets_section" name="Assets Section"
+		location="acis_link" i18n-name-key="webfragments.navigation.bar.acis.dropdown.assets.section"
+		weight="50">
+	</web-section>
+
+	<web-item
+		i18n-name-key="webfragments.navigation.bar.acis.dropdown.assets.section.link"
+		key="acis_config_link" name="Assests Configuration" section="acis_link/assets_section"
+		weight="10">
+		<!-- <condition class="com.atlassian.jira.plugin.webfragment.conditions.HasLastSearchRequestCondition"/> -->
+		<label key="menu.acis.assets.config" />
+		<link linkId="assets_config_link">/secure/assetsconfig!default.jspa</link>
+		<!-- <tooltip key="menu.acis.sd.portal.title"/> -->
+	</web-item>
+
+	<webwork1 key="acis-webworks" name="ACIS JSD" class="java.lang.Object">
+		<actions>
+			<action name="com.acis.itsm.portal.PortalAction" alias="JSDPortal">
+				<view name="success">/templates/com/acis/itsm/portals/portal-success.vm
+				</view>
+				<view name="error">/templates/com/acis/itsm/portals/portal-error.vm
+				</view>
+				<view name="input">/templates/com/acis/itsm/portals/portal-input.vm
+				</view>
+			</action>
+
+			<action name="com.acis.assets.mgmt.AssetsConfigurationAction"
+				alias="assetsconfig">
+				<view name="error">/templates/com/acis/assetsmgmt/assets-error.vm
+				</view>
+				<view name="input">/templates/com/acis/assetsmgmt/assets-configuration.vm
+				</view>
+
+				<command name="fields-mapping-command" alias="assetsMappingSave">
+					<view name="success">/templates/com/acis/assetsmgmt/assets-configuration.vm
+					</view>
+				</command>
+
+			</action>
+
+		</actions>
+	</webwork1>
+
+	<issue-tabpanel key="acis-Collaboration-tabpanel" name="Collaboration Tab Panel"
+		class="com.acis.itsm.issuetabpanels.CollaborationTabPanel">
+		<resource type="i18n" name="i18n"
+			location="templates.plugins.subversion.issuetabpanels.subversion_jira_plugin" />
+		<description>Show Collaboration details of an service desk ticket on
+			issue tab panel.
+		</description>
+		<label>Collaboration</label>
+		<resource type="velocity" name="view"
+			location="templates/com/acis/itsm/issuetabpanels/collaboration-details-view.vm" />
+	</issue-tabpanel>
+
+	<web-panel key="acis-itsm-collaboration" name="ACIS Collaboration Section"
+		location="atl.jira.view.issue.right.context" weight="1000">
+		<label>Collaboration</label>
+		<condition
+			class="com.acis.itsm.webpanels.CollaborationSectionDisplayCondition">
+			<param name="projectkey">IHD</param>
+		</condition>
+		<resource name="view" type="velocity"
+			location="templates/com/acis/itsm/webpanels/collaboration-web-panel-view.vm" />
+		<context-provider
+			class="com.acis.itsm.webpanels.ColloborationContextProvider" />
+
+	</web-panel>
+
+</atlassian-plugin>

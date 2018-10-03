@@ -1,0 +1,10 @@
+com\myplugin\conditions\AssigneeOnlyCondition.class
+com\myplugin\postfunctions\SetUserCFFunctionFactory.class
+com\atlassian\tutorial\myPugin\api\MyPluginComponent.class
+com\myplugin\postfunctions\SetUserCFFunction.class
+com\myplugin\validators\FieldValidatorFactory.class
+com\myplugin\validators\FieldValidator.class
+com\atlassian\tutorial\myPugin\impl\MyPluginComponentImpl.class
+com\myplugin\conditions\RoleCondition.class
+com\myplugin\conditions\RoleConditionFactory.class
+com\myplugin\conditions\AssigneConditionFactory.class

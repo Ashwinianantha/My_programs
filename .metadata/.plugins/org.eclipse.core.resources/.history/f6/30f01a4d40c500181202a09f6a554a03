@@ -1,0 +1,45 @@
+package com.acis.Client;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+
+public class RestClient {
+	@Autowired
+	private RestTemplateBuilder restTemplate;
+
+	public void downloadFile() { // This method will download file using RestTemplate
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+			MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+			body.add("file", getTestFile());
+
+			HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+
+			String serverUrl = "http://localhost:8082/spring-rest/fileserver/singlefileupload/";
+
+			RestTemplate restTemplate = new RestTemplate();
+			ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private Object getTestFile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

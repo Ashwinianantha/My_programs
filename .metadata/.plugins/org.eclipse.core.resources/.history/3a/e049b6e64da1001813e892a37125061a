@@ -1,0 +1,5 @@
+package com.acis.rest;
+
+public class RestGet {
+
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="" key="targetName"/>
+	<item value="false" key="uiPlugin"/>
+	<item value="false" key="apiAnalysis"/>
+	<item value="false" key="rcpPlugin"/>
+	<item value="false" key="osgiProject"/>
+	<item value="false" key="generatePluginActivator"/>
+	<section name="PDEFormActionManager">
+	</section>
+	<section name="pde-form-editor">
+		<item value="bundle-context" key="org.eclipse.pde.ui.manifestEditor"/>
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="targetStateView">
+	</section>
+	<section name="pluginsView">
+	</section>
+</section>

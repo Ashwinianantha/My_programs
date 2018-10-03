@@ -1,0 +1,27 @@
+package com.client;
+
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.client.RestTemplate;
+
+import com.model.Employee;
+
+public class RestfulClient {
+	RestTemplate restTemplate;
+
+	public RestfulClient() {
+		restTemplate = new RestTemplate();
+	}
+
+	public void getEntity() {
+		System.out.println("Begin /GET request!");
+		String getUrl = "http://localhost:7080/get?id:1,firstName:lokesh,lastName:gupta,email:hhjggjjjava@gmail.com";
+		ResponseEntity<Employee> getResponse = restTemplate.getForEntity(getUrl, Employee.class);
+		if (getResponse.getBody() != null) {
+			System.out.println("Response for Get Request: " + getResponse.getBody().toString());
+		} else {
+			System.out.println("Response for Get Request: NULL");
+		}
+
+	}
+}

@@ -1,0 +1,106 @@
+<atlassian-plugin key="${atlassian.plugin.key}"
+	name="${project.name}" plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}"
+			url="${project.organization.url}" />
+		<param name="plugin-icon">images/pluginIcon.png</param>
+		<param name="plugin-logo">images/pluginLogo.png</param>
+	</plugin-info>
+
+	<!-- add our i18n resource -->
+	<resource type="i18n" name="i18n" location="myPlugin" />
+
+	<!-- add our web resources -->
+	<web-resource key="myPlugin-resources"
+		name="myPlugin Web Resources">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
+
+		<resource type="download" name="myPlugin.css"
+			location="/css/myPlugin.css" />
+		<resource type="download" name="myPlugin.js"
+			location="/js/myPlugin.js" />
+		<resource type="download" name="images/" location="/images" />
+
+		<context>myPlugin</context>
+	</web-resource>
+	<web-section name="mySection"
+		i18n-name-key="my-section.name" key="my-section"
+		location="my-item-link" weight="1000">
+		<description key="my-section.description">The mySection Plugin</description>
+		<label key="my-section.label" />
+	</web-section>
+	<web-item name="myItem" i18n-name-key="my-item.name"
+		key="my-item" section="system.top.navigation.bar" weight="1000">
+		<description key="my-item.description">The myItem Plugin</description>
+		<label key="my-item.label"></label>
+		<link linkId="my-item-link">deleteMe</link>
+	</web-item>
+
+	<workflow-condition key="role-condition"
+		name="Role based condition"
+		class="com.myplugin.conditions.RoleConditionFactory">
+		<description>Role Based Workflow Condition</description>
+
+		<condition-class>
+			com.myplugin.conditions.RoleCondition
+		</condition-class>
+
+		<resource type="velocity" name="view"
+			location="templates/com/myplugin/view-roleCondition.vm" />
+		<resource type="velocity" name="input-parameters"
+			location="templates/com/myplugin/edit-roleCondition.vm" />
+		<resource type="velocity" name="edit-parameters"
+			location="templates/com/myplugin/edit-roleCondition.vm" />
+	</workflow-condition>
+	
+	<workflow-condition key="assignee-condition"
+		name="Assignee only condition -Acis"
+		class="com.myplugin.conditions.AssigneConditionFactory">
+		<description>Assignee Based Workflow Condition</description>
+
+		<condition-class>
+			com.myplugin.conditions.AssigneeOnlyCondition
+		</condition-class>
+
+		<resource type="velocity" name="view"
+			location="templates/com/myplugin/assignee-view-condition.vm" />
+		
+	</workflow-condition>
+
+	<workflow-validator key="field-validator"
+		name="Field Validator" class="com.myplugin.validators.FieldValidatorFactory">
+		<description>Field Not Empty Workflow Validator</description>
+
+		<validator-class>
+			com.myplugin.validators.FieldValidator
+		</validator-class>
+
+		<resource type="velocity" name="view"
+			location="templates/com/myplugin/view-fieldValidator.vm" />
+		<resource type="velocity" name="input-parameters"
+			location="templates/com/myplugin/edit-fieldValidator.vm" />
+		<resource type="velocity" name="edit-parameters"
+			location="templates/com/myplugin/edit-fieldValidator.vm" />
+	</workflow-validator>
+	
+	<workflow-function key="set-usercf" name="Set User CF Post Function" 
+                class="com.myplugin.postfunctions.SetUserCFFunctionFactory">
+    <description>Set Defined User or Current User if not defined!</description>
+    <function-class>com.myplugin.postfunctions.SetUserCFFunction</function-class>
+
+    <orderable>true</orderable>
+    <unique>false</unique>
+    <deletable>true</deletable>
+
+    <resource type="velocity" name="view" location="templates/com/myplugin/view-userCFFunction.vm"/>
+    <resource type="velocity" name="input-parameters" location="templates/com/myplugin/edit-userCFFunction.vm"/>
+    <resource type="velocity" name="edit-parameters" location="templates/com/myplugin/edit-userCFFunction.vm"/>
+</workflow-function>
+
+	
+
+
+
+</atlassian-plugin>

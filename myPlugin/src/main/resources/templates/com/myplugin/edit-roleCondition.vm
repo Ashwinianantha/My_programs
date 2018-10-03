@@ -1,0 +1,17 @@
+<tr bgcolor="#ffffff">
+    <td align="right" valign="top" bgcolor="#fffff0">
+        <span class="label">Project Role:</span>
+    </td>
+    <td bgcolor="#ffffff" nowrap>
+        <select name="role" id="role">
+        #foreach ($field in $roles)
+            <option value="$field.name"
+            #if ($field.name.equals($role))
+                SELECTED
+            #end
+            >$field.name</option>
+        #end
+        </select>
+        <br><font size="1"> the role in which the Selectuser should be present!</font>
+    </td>
+</tr>

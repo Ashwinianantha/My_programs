@@ -1,0 +1,9 @@
+127.0.0.1 - - [13/Aug/2018:12:42:29 +0530] "GET /helloworld/rest HTTP/1.1" 404 1084
+127.0.0.1 - - [13/Aug/2018:12:42:53 +0530] "GET /helloworld/rest/ HTTP/1.1" 200 111
+0:0:0:0:0:0:0:1 - - [13/Aug/2018:12:44:26 +0530] "GET /helloworld/WEB-INF/classes/com/acis/rest/RESTfulHelloWorld.java HTTP/1.1" 404 -
+127.0.0.1 - - [13/Aug/2018:12:45:36 +0530] "GET / HTTP/1.1" 404 1076
+0:0:0:0:0:0:0:1 - - [13/Aug/2018:12:45:37 +0530] "GET /helloworld/WEB-INF/classes/com/acis/rest/RESTfulHelloWorld.java HTTP/1.1" 404 1053
+127.0.0.1 - - [13/Aug/2018:12:46:57 +0530] "GET / HTTP/1.1" 404 1076
+0:0:0:0:0:0:0:1 - - [13/Aug/2018:12:46:58 +0530] "GET /helloworld/WEB-INF/classes/com/acis/rest/RESTfulHelloWorld.java HTTP/1.1" 404 1053
+127.0.0.1 - - [13/Aug/2018:12:47:57 +0530] "GET /helloworld/rest/ HTTP/1.1" 200 111
+127.0.0.1 - - [13/Aug/2018:12:54:07 +0530] "GET /helloworld/rest/ HTTP/1.1" 200 111

@@ -1,0 +1,19 @@
+<html>
+<head>
+  	$webResourceManager.requireResource("com.atlassian.auiplugin:ajs")	
+   	<title>Customer Portal</title>
+   	<meta charset="utf-8>
+    <meta name="decorator" content="atl.general">
+  </head>
+  <body>
+  	<div class="aui-message aui-message-success">
+    	<p class="title">
+        	<strong>Sucess!</strong>
+    	</p>
+    	#if($sdTicket && $portalId)
+    	<p> <a href="${req.getContextPath()}/servicedesk/customer/portal/$portalId/$sdTicket">$sdTicket</a> Service Desk Ticket created Successfully! </p>
+    	#end
+	</div>
+  </body>
+
+</html>

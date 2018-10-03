@@ -1,0 +1,21 @@
+package com.client;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import com.model.Employee;
+
+@Component
+public class RestfulClient {
+	public static void RestfulClient() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Employee> employee = restTemplate.getForEntity("http://localhost:7080/", Employee.class);
+		System.out.println("employee name:" + employee.getBody());
+	}
+
+	public void run(String... arg0) throws Exception {
+		RestfulClient();
+
+	}
+}

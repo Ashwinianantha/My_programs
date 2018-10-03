@@ -1,0 +1,3 @@
+#if ($role)
+    User should have <b>$role</b> Role!
+#end

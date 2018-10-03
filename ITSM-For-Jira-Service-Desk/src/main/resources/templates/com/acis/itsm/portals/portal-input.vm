@@ -1,0 +1,46 @@
+<html> 
+ <head>  	  
+  	$webResourceManager.requireResource("com.atlassian.auiplugin:ajs")	
+        	
+   	<title>Customer Portal</title>
+    <meta name="decorator" content="atl.general">
+  </head>
+  <body class="aui-layout aui-theme-default">
+   <div class="content-body aui-panel">
+    <form id="customer-portal" class="aui" action="${req.contextPath}/secure/JSDPortal.jspa">
+    	<div class="field-group">
+        	<label for="summary-input">Summary</label>
+        	<input class="text" type="text" id="summary-input" name="summary-input" placeholder="Summary..">        	
+    	</div>
+    	<div class="field-group">
+        	<label for="description-input">Description</label>
+        	<textarea class="textarea" name="description-input"
+                  id="description-input" placeholder="Your description here..."></textarea>
+    	</div>
+    	<div class="field-group">
+        	<label for="select-example">Team</label>
+        	<select class="select" id="select-example" name="select-example">
+            	<option>Select</option>
+            	<option>Option 1</option>
+            	<option>Option 2</option>            
+        	</select>
+    	</div>
+    	<div class="field-group">
+        	<label for="select-example">Impact</label>
+        	<select class="select" id="impact-field" name="impact-field">
+            	<option>Select</option>
+            	<option>Entire Organization</option>
+            	<option>Entire Team</option>
+            	<option>Self</option>            
+        	</select>
+    	</div>
+    	<div class="buttons-container">
+        	<div class="buttons">
+            	<input class="button submit" type="submit" value="Submit" id="form-save-button">
+            	<a class="cancel" href="${req.contextPath}/secure/Dashboard.jspa">Cancel</a>
+        	</div>
+    	</div>
+    </form>
+    </div>	
+  </body>
+</html>
